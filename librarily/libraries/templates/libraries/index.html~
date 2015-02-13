@@ -1,0 +1,17 @@
+{% extends "libraries/base.html" %}
+
+{% block title %} {{block.super}} - All libraries {% endblock title %}
+
+{% block header %}
+List of libraries
+{% endblock header %}
+
+{% block content %}
+{% if latest_library_list %}
+    <ul>
+    {% for library in latest_library_list %}
+	<li><a href="{% url 'libraries:show_library' library.uuid %}">{{ library.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endblock content %}

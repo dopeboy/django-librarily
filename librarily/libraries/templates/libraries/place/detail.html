@@ -1,0 +1,21 @@
+{% extends "libraries/base.html" %}
+
+{% block title %} {{block.super}} - {{place}} {% endblock title %}
+
+{% block header %}
+	{{place}}
+{% endblock header %}
+
+{% block content %}
+	<ul>
+		<li>Address: {{ place.address }}</li>
+		<li>City: {{ place.city }}</li>
+		<li>State: {{ place.state }}</li>
+		<li>Library: {{ place.library }}</li>
+	</ul>
+	<a href="{% url 'libraries:place_update' place.uuid %}">Update place</a>
+	<form method="post" action="{% url 'libraries:place_delete' place.uuid %}">
+		{% csrf_token %}
+		<input type="submit" value="Delete place" />
+	</form>
+{%endblock content %}

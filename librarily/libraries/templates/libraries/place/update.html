@@ -1,0 +1,17 @@
+{% extends "libraries/base.html" %}
+
+{% block title %} {{block.super}} - Update place{% endblock title %}
+
+{% block header %}
+Update place
+{% endblock header %}
+
+{% block content %}
+	<form method="post">
+		{% csrf_token %}
+		{% for field in form %}
+			<div>{{ field.label_tag }} {{ field }} {{ field.errors }}</div>	
+		{% endfor %}
+		<input type="submit" value="Update place" />
+	</form>
+{% endblock content %}

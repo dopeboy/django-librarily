@@ -1,0 +1,17 @@
+{% extends "libraries/base.html" %}
+
+{% block title %} {{block.super}} - Create book{% endblock title %}
+
+{% block header %}
+Create book
+{% endblock header %}
+
+{% block content %}
+	<form action="{% url 'libraries:book_create' %}" method="post">
+		{% csrf_token %}
+		{% for field in form %}
+			<div>{{ field.label_tag }} {{ field }} {{ field.errors }}</div>	
+		{% endfor %}
+		<input type="submit" value="Create book" />
+	</form>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends "libraries/base.html" %}
+
+{% block title %} {{block.super}} - All books {% endblock title %}
+
+{% block header %}
+List of books
+{% endblock header %}
+
+{% block content %}
+	{% if book_list %}
+		<ul>
+		{% for book in book_list %}
+			<li><a href="{% url 'libraries:book_detail' book.uuid %}">{{ book.title }}</a></li>
+		{% endfor %}
+		</ul>
+		{% else %}
+			<i>No books</i>
+			<br/>
+			<br/>
+	{% endif %}
+	<a href="{% url 'libraries:book_create' %}">Create book</a>
+{% endblock content %}

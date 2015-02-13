@@ -1,0 +1,21 @@
+{% extends "libraries/base.html" %}
+
+{% block title %} {{block.super}} - All places {% endblock title %}
+
+{% block header %}
+List of places
+{% endblock header %}
+
+{% block content %}
+	{% if place_list %}
+		<ul>
+		{% for place in place_list %}
+			<li><a href="{% url 'libraries:place_detail' place.uuid %}">{{ place }}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<i>No places</i>
+		<br/>
+	{% endif %}
+	<a href="{% url 'libraries:place_create' %}">Create place</a>
+{% endblock content %}

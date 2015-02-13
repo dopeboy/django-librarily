@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.rst
+setup.cfg
+setup.py
+django_logicaldelete.egg-info/PKG-INFO
+django_logicaldelete.egg-info/SOURCES.txt
+django_logicaldelete.egg-info/dependency_links.txt
+django_logicaldelete.egg-info/top_level.txt
+logicaldelete/__init__.py
+logicaldelete/admin.py
+logicaldelete/managers.py
+logicaldelete/models.py
+logicaldelete/query.py

@@ -1,0 +1,109 @@
+Metadata-Version: 2.0
+Name: django-livefield
+Version: 2.1.0
+Summary: Convenient soft-deletion support for Django models
+Home-page: https://github.com/hearsaycorp/django-livefield
+Author: Hearsay Social
+Author-email: opensource@hearsaysocial.com
+License: MIT
+Keywords: python django soft-delete
+Platform: UNKNOWN
+Requires-Dist: Django (>=1.6,<1.8)
+Requires-Dist: django-model-utils (>=2.0,<3.0)
+
+================
+django-livefield
+================
+
+.. image:: https://travis-ci.org/hearsaycorp/django-livefield.png
+    :alt: Build Status
+    :target: https://travis-ci.org/hearsaycorp/django-livefield
+
+=====
+About
+=====
+A Django field that enables convenient soft-deletion.
+
+============
+Installation
+============
+Simple: ``pip install django-livefield``.
+
+=============
+Example Usage
+=============
+.. code:: python
+
+    >>> from django.db import models
+    >>> from livefield import LiveField, LiveManager
+    >>>
+    >>>
+    >>> class Person(models.Model):
+    ...    name = models.CharField()
+    ...    live = LiveField()
+    ...
+    ...    objects = LiveManager()
+    ...    all_objects = LiveManager(include_soft_deleted=True)
+    ...    
+    ...    class Meta:
+    ...        unique_together = ('name', 'live')
+    ...
+    ...    def delete(self):
+    ...        self.live = False
+    ...        self.save()
+    ...
+    >>> john = Person.objects.create(name='John Cleese')
+    >>> doppelganger = Person(name='John Cleese')
+    >>> doppelganger.save()  # Raises an IntegrityError
+    >>> john.delete()
+    >>> doppelganger.save()  # Succeeds!
+
+=======
+License
+=======
+MIT. See LICENSE.txt for details.
+
+============
+Contributing
+============
+Pull requests welcome! To save everyone some hassle, please open an
+issue first so we can discuss your proposed change.
+
+In your PR, be sure to add your name to AUTHORS.txt and include some
+tests for your spiffy new functionality. Travis CI will green-light your
+build once it passes the unit tests (``./setup.py test``) and our
+linters (``./lint.sh``).
+
+
+Changelog
+=========
+
+2.1.0 (2014-09-04)
+------------------
+    - Add support for Django 1.7.
+
+2.0.0 (2014-07-13)
+------------------
+    - Renamed top-level namespace to ``livefield``.
+    - Restructured internally to match Django convention.
+    - Added GIS support.
+    - Added South support.
+
+1.0.0 (2014-02-14)
+------------------
+    - Initial release.
+    - Separated existing code from main application repository.
+
+
+Developed and maintained by `Hearsay Social, Inc.
+<http://hearsaysocial.com>`_.
+
+Contributors
+============
+| `Adam DePue <http://github.com/adepue>`_
+| `Akshay Shah <http://github.com/akshayjshah>`_
+| `John Lynn <http://github.com/jlynn>`_
+| `Dylan Verheul <http://github.com/dyve>`_
+
+
+

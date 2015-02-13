@@ -1,0 +1,21 @@
+{% extends "libraries/base.html" %}
+
+{% block title %} {{block.super}} - {{ book.title }} {% endblock title %}
+
+{% block header %}
+	{{ book.title }}
+{% endblock header %}
+
+{% block content %}
+	<ul>
+		<li>Publish date: {{ book.pub_date }}</li>
+		<li>Library: <a href="{% url 'libraries:library_detail' book.library.uuid %}">{{ book.library }}</a></li>
+		<li>Authors:
+			<ul>
+				{% for author in book.authors.all %}
+					<li><a href="{% url 'libraries:author_detail' author.uuid %}">{{ author }}</a></li>
+				{% endfor %}
+			</ul>
+	</ul>
+	<a href="{% url 'libraries:book_update' book.uuid %}">Update book</a>
+{% endblock content %}
