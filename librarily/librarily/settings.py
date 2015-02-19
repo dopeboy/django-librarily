@@ -37,8 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'libraries',
-	'django_extensions',	
-	'debug_toolbar',	
+    'django_extensions',
+    'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,6 +91,11 @@ LOGIN_REDIRECT_URL = 'libraries:library_list'
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR, "static"),
+#    '/var/www/static/',
+# )
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

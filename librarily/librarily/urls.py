@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-urlpatterns = patterns('',
-
+urlpatterns = patterns(
+    '',
     url(r'^admin/', include(admin.site.urls)),
-	url(r'^librarily/',include('libraries.urls', namespace='libraries')), 
+    url(r'^librarily/', include('libraries.urls', namespace='libraries')),
 )

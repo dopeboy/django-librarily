@@ -1,20 +1,31 @@
 {% extends "libraries/base.html" %}
 
+{% block head %}
+	{% load staticfiles %}
+	<script type="text/javascript" src="{% static "js/libraries/library/like.js" %}"></script> 
+{% endblock head %}
+
 {% block title %} {{block.super}} - {{library.name}} {% endblock title %}
 
 {% block header %}
-	{{library.name}}
+	{{ library.name }}
 {% endblock header %}
 
 {% block content %}
 	<ul>
-		<li>Location: {{ library.place }}</li>
-		<li>Books
-				<ul>
-				{% for book in library.book_set.all %}
-				<li><a href="{% url 'libraries:book_detail' book.uuid %}">{{ book.title }}</a></li>
-				{% endfor %}
-				</ul>
+		<li>
+			Location: {{ library.place }}
+		</li>
+		<li>
+			Books
+			<ul>
+			{% for book in library.book_set.all %}
+			<li><a href="{% url 'libraries:book_detail' book.uuid %}">{{ book.title }}</a></li>
+			{% endfor %}
+			</ul>
+		</li>
+		<li>
+			Likes: <span id="likes">{{ library.likes }}</span>
 		</li>
 	</ul>
 	<a href="{% url 'libraries:library_update' library.uuid %}">Update library</a>
@@ -22,4 +33,5 @@
 		{% csrf_token %}
 		<input type="submit" value="Delete library" />
 	</form>
+	<a id="like" href="{% url 'libraries:library_like' library.uuid %}" library_id="{{ library.uuid }}">Like library</a>
 {%endblock content %}

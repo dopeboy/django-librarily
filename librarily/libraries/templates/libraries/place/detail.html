@@ -11,7 +11,7 @@
 		<li>Address: {{ place.address }}</li>
 		<li>City: {{ place.city }}</li>
 		<li>State: {{ place.state }}</li>
-		<li>Library: {{ place.library }}</li>
+		<li>Library: {{ place.library_set.all.0 }}</li>
 	</ul>
 	<a href="{% url 'libraries:place_update' place.uuid %}">Update place</a>
 	<form method="post" action="{% url 'libraries:place_delete' place.uuid %}">
