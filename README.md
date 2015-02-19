@@ -29,7 +29,7 @@ This is a proof-of-concept reference project that I (1) used to learn Django and
 
 The application replicates the classic library data model.  
 
-[Imgur](http://i.imgur.com/rhAGAUU.png)
+![Image](http://i.imgur.com/rhAGAUU.png)
 
 ## Delete behavior
 (Soft) delete rules are as follows:
