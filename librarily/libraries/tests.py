@@ -85,7 +85,7 @@ class AuthorTestCase(TestCase):
     def test_place_cascade_delete(self):
         """If a place gets deleted, so should the library attached
         to it and the books attached to the library and any author
-        book records. The author should still be there though."""
+        book connections. The author should still be there though."""
         p = Place.objects.get(address='68 Jay St')
         b = Book.objects.get(title='Great Gatsby')
         a = Author.objects.get(first_name='Francis')
